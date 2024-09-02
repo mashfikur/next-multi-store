@@ -1,4 +1,5 @@
 import * as React from "react";
+import { FaCartShopping } from "react-icons/fa6";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -10,11 +11,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
+import Link from "next/link";
 
 export type TProduct = {
   title: string;
   images: string[];
   description: string;
+  id: number;
 };
 
 export function ProductCard({ product }: { product: TProduct }) {
@@ -38,8 +41,16 @@ export function ProductCard({ product }: { product: TProduct }) {
       </CardHeader>
 
       <CardFooter className="flex justify-between">
-        <Button>Buy Now</Button>
-        <Button variant="outline">Show Details</Button>
+        <Button className="flex items-center gap-2">
+          {" "}
+          <span className="text-lg">
+            <FaCartShopping />{" "}
+          </span>{" "}
+          <span>Add to Cart</span>
+        </Button>
+        <Link href={`/products/${product.id}`}>
+          <Button variant="outline">Show Details</Button>
+        </Link>
       </CardFooter>
     </Card>
   );

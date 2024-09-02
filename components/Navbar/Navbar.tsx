@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <header>
       {/* content wrapper */}
-      <div className="container my-6 flex items-center justify-between rounded-xl border px-4 py-5 shadow-sm">
+      <div className="container my-6 flex items-center justify-between rounded-full border px-6 py-5 shadow-sm">
         {/* logo */}
         <div className="text-4xl font-semibold">
           Next<span className="text-violet-500">Store</span>
