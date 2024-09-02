@@ -24,7 +24,7 @@ const ProdInfo = ({
     <p className="text-base font-medium">
       {" "}
       {children} :{" "}
-      <span className="text-textGray font-semibold"> {value} </span>{" "}
+      <span className="text-textGray font-semibold"> {value || "N/A"} </span>{" "}
     </p>
   );
 };
@@ -37,7 +37,6 @@ const page = async ({ params }: TParamType) => {
 
   // getting single Product data
   const productData = await getSingleProduct(params.prodId);
-
 
   return (
     <section className="my-8">
