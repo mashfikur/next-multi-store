@@ -1,10 +1,13 @@
-import Image from "next/image";
+// "use client";
 import getAllProducts from "./lib/getAllProducts";
 import { ProductCard, TProduct } from "@/components/Product/ProductCard";
 import ProductLimit from "@/components/Product/ProductLimit";
+import { useAppSelector } from "@/redux/hooks";
+import { useSelector } from "react-redux";
+import ProductClient from "./ProductClient";
 
 const page = async () => {
-  const products = await getAllProducts();
+  const data = await getAllProducts();
 
   return (
     <section className="my-10">
@@ -19,11 +22,8 @@ const page = async () => {
         </div>
       </div>
 
-      <div className="my-5 grid grid-cols-4 gap-4 gap-y-8">
-        {products.products.map((item: TProduct, index: number) => (
-          <ProductCard product={item} key={index} />
-        ))}
-      </div>
+      {/* Displaying Products */}
+      <ProductClient initialProducts={data.products} />
     </section>
   );
 };

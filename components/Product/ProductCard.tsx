@@ -18,6 +18,7 @@ export type TProduct = {
   images: string[];
   description: string;
   id: number;
+  thumbnail:string
 };
 
 export function ProductCard({ product }: { product: TProduct }) {
@@ -26,7 +27,7 @@ export function ProductCard({ product }: { product: TProduct }) {
       <CardContent className="flex-grow">
         <div className="h-[300px] w-full">
           <Image
-            src={product.images[0]}
+            src={product?.images[0]}
             alt={product.title}
             width={500}
             height={500}

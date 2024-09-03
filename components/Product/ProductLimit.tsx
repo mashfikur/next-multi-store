@@ -17,7 +17,6 @@ const ProductLimit = () => {
   const dispatch = useAppDispatch();
 
   const handleChange = (value: string) => {
-    console.log("clicked");
     dispatch(setLimit(parseInt(value)));
   };
 
