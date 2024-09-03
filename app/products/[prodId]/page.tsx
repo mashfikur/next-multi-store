@@ -1,7 +1,7 @@
-import { IoReturnUpBack } from "react-icons/io5";
 import getSingleProduct from "../lib/getSingleProduct";
 import Image from "next/image";
 import GoBackBtn from "./GoBackBtn";
+import { TProduct } from "@/components/Product/ProductCard";
 
 type TParamType = {
   params: {
@@ -24,10 +24,21 @@ const ProdInfo = ({
     <p className="text-base font-medium">
       {" "}
       {children} :{" "}
-      <span className="text-textGray font-semibold"> {value || "N/A"} </span>{" "}
+      <span className="font-semibold text-textGray"> {value || "N/A"} </span>{" "}
     </p>
   );
 };
+
+// making dynamic segments for SSG
+export async function generateStaticParams() {
+  const data = await fetch("https://dummyjson.com/products").then((res) =>
+    res.json(),
+  );
+
+  return data.products.map((item: TProduct) => {
+    prodId: item.id;
+  });
+}
 
 const page = async ({ params }: TParamType) => {
   // in case if a single product is not available
@@ -37,6 +48,7 @@ const page = async ({ params }: TParamType) => {
 
   // getting single Product data
   const productData = await getSingleProduct(params.prodId);
+
 
   return (
     <section className="my-8">
@@ -65,7 +77,7 @@ const page = async ({ params }: TParamType) => {
                 {" "}
                 {productData.title}{" "}
               </p>
-              <p className="text-primaryColor text-2xl font-semibold">
+              <p className="text-2xl font-semibold text-primaryColor">
                 {" "}
                 ${productData.price}{" "}
               </p>

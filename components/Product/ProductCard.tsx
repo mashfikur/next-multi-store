@@ -33,6 +33,7 @@ export function ProductCard({ product }: { product: TProduct }) {
             height={500}
             quality={100}
             className="h-full w-full object-contain"
+            placeholder="empty"
           />
         </div>
       </CardContent>

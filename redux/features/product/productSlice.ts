@@ -4,6 +4,7 @@ type TIntialState = {
   limit: number;
   skip: number;
   cart?: string[];
+  searchText?: string;
 };
 
 const initialState: TIntialState = {
@@ -27,9 +28,15 @@ export const productSlice = createSlice({
         skip: action.payload,
       };
     },
+    setSearchText: (state, action) => {
+      return {
+        ...state,
+        searchText: action.payload,
+      };
+    },
   },
 });
 
-export const { setLimit, setSkip } = productSlice.actions;
+export const { setLimit, setSkip, setSearchText } = productSlice.actions;
 
 export default productSlice.reducer;

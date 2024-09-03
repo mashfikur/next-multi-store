@@ -1,10 +1,7 @@
-// "use client";
 import getAllProducts from "./lib/getAllProducts";
-import { ProductCard, TProduct } from "@/components/Product/ProductCard";
 import ProductLimit from "@/components/Product/ProductLimit";
-import { useAppSelector } from "@/redux/hooks";
-import { useSelector } from "react-redux";
 import ProductClient from "./ProductClient";
+import ProductSearch from "@/components/Product/ProductSearch";
 
 const page = async () => {
   const data = await getAllProducts();
@@ -14,7 +11,7 @@ const page = async () => {
       {/* products functionlaity area */}
       <div className="flex items-center justify-between">
         {/* search bar */}
-        <div></div>
+        <ProductSearch />
 
         {/* limit and sorting  */}
         <div>
