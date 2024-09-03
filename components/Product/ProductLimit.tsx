@@ -23,7 +23,10 @@ const ProductLimit = () => {
   const selectValues = [5, 10, 20, 30];
 
   return (
-    <Select onValueChange={handleChange}>
+    <Select
+      defaultValue={limit ? limit.toString() : undefined}
+      onValueChange={handleChange}
+    >
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Products Per Page" />
       </SelectTrigger>

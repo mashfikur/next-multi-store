@@ -1,3 +1,4 @@
+import { TProduct } from "@/components/Product/ProductCard";
 import { createSlice } from "@reduxjs/toolkit";
 
 type TIntialState = {
@@ -5,10 +6,11 @@ type TIntialState = {
   skip: number;
   cart?: string[];
   searchText?: string;
+  displayProducts?: TProduct[];
 };
 
 const initialState: TIntialState = {
-  limit: 10,
+  limit: 0,
   skip: 0,
 };
 
@@ -34,9 +36,16 @@ export const productSlice = createSlice({
         searchText: action.payload,
       };
     },
+    setDisplayProd: (state, action) => {
+      return {
+        ...state,
+        displayProducts: action.payload,
+      };
+    },
   },
 });
 
-export const { setLimit, setSkip, setSearchText } = productSlice.actions;
+export const { setLimit, setSkip, setSearchText, setDisplayProd } =
+  productSlice.actions;
 
 export default productSlice.reducer;

@@ -1,11 +1,13 @@
 "use client";
 import { Input } from "@/components/ui/input";
 import { setSearchText } from "@/redux/features/product/productSlice";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import React from "react";
 import { GoSearch } from "react-icons/go";
 const ProductSearch = () => {
   const dispatch = useAppDispatch();
+
+  const searchText = useAppSelector((state) => state.products.searchText);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTimeout(() => {
@@ -23,6 +25,7 @@ const ProductSearch = () => {
         type="text"
         placeholder="Search product ..."
         className="w-full rounded-full py-5 pl-10 focus-visible:ring-0"
+        defaultValue={searchText}
       />
     </div>
   );
